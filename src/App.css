@@ -1,0 +1,25 @@
+@import 'tailwindcss';
+
+@theme {
+  /* sidebar */
+  --color-admin-sidebar: #04052e;
+  --color-rider-sidebar: #00043a;
+  --color-branch-sidebar: #001845;
+
+  /* bg */
+  --color-bg: #ffffff; /* Main background color */
+  --color-secondary: #f3f4f6; /* Light gray for section backgrounds */
+
+  /* text */
+  --color-text-main: #111827; /* Main black text */
+  --color-text-secondary: #ffffff; /* White text (on dark backgrounds) */
+  --color-text-inverse: #9ca3af; /* Gray text */
+  --color-text-muted: #4b5563; /* Muted gray text for less emphasis */
+
+  /* btn */
+  --color-btn-primary: #4f46e5; /* Main button background (indigo-600) */
+  --color-btn-primary-hover: #4338ca; /* Darker blue for hover (indigos-700) */
+  --color-btn-secondary: #3b82f6; /* Light gray button background */
+  --color-btn-secondary-hover: #2563eb; /* Slightly darker on hover */
+  --color-text-button: #ffffff; /* White text on primary buttons */
+}
