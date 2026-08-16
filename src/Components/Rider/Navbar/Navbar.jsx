@@ -5,7 +5,7 @@ import { FiMenu, FiUser, FiSearch, FiBell, FiMapPin } from 'react-icons/fi';
 import DateTime from '../../../Shared/DateTime/DateTime';
 
 const Navbar = ({ toggleSidebar }) => {
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -83,8 +83,8 @@ const Navbar = ({ toggleSidebar }) => {
               <FiUser className="h-4 w-4 text-green-600" />
             </div>
             <div className="hidden sm:block text-right">
-              <p className="text-sm font-medium text-gray-800">Rider Name</p>
-              <p className="text-xs text-gray-500">Available</p>
+              <p className="text-sm font-medium text-gray-800">{user?.name || 'Rider Name'}</p>
+              <p className="text-xs text-gray-500">{user?.mobile || 'Available'}</p>
             </div>
             <button
               onClick={handleLogout}

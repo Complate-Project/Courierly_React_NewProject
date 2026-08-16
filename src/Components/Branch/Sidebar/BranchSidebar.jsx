@@ -50,6 +50,11 @@ const BranchSidebar = ({ isOpen, toggleSidebar, logout }) => {
           icon: <FiTruck />,
         },
         {
+          name: 'Auto Assign for Rider',
+          path: '/branch/dashboard/auto-assign-rider',
+          icon: <FiUserCheck />,
+        },
+        {
           name: 'In Charge',
           path: '/branch/dashboard/in-charge',
           icon: <FiUserCheck />,

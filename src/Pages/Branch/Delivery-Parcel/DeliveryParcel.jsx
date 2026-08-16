@@ -1,11 +1,8 @@
 import React from 'react';
+import Consignments from '../Consignments/Consignments';
 
 const DeliveryParcel = () => {
-  return (
-    <div>
-      <p>Delivery Parcel</p>
-    </div>
-  );
+  return <Consignments />;
 };
 
 export default DeliveryParcel;

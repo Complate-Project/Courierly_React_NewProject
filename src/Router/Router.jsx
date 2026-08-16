@@ -141,6 +141,10 @@ export const router = createBrowserRouter([
         element: <Rider />,
       },
       {
+        path: '/branch/dashboard/auto-assign-rider',
+        element: <PickupReAssign />,
+      },
+      {
         path: '/branch/dashboard/in-charge',
         element: <InCharge />,
       },

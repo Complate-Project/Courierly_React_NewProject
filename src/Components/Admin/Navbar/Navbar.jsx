@@ -10,7 +10,7 @@ import {
 import DateTime from '../../../Shared/DateTime/DateTime';
 
 const Navbar = ({ toggleSidebar }) => {
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleLogout = () => {
@@ -82,8 +82,8 @@ const Navbar = ({ toggleSidebar }) => {
               <FiUser className="h-4 w-4 text-indigo-600" />
             </div>
             <div className="hidden md:block text-right">
-              <p className="text-sm font-medium text-gray-800">Admin User</p>
-              <p className="text-xs text-gray-500">Administrator</p>
+              <p className="text-sm font-medium text-gray-800">{user?.name || 'Admin User'}</p>
+              <p className="text-xs text-gray-500">{user?.email || 'Administrator'}</p>
             </div>
 
             <button
