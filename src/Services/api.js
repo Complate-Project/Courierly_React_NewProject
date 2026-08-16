@@ -47,7 +47,7 @@ export const loginApi = async (credentials) => {
 
     const data = await response.json();
     return { status: response.status, data };
-  } catch (err) {
+  } catch {
     // Retry with JSON fallback if FormData network error occurs
     const response = await fetch(`${BASE_URL}/api/login`, {
       method: 'POST',

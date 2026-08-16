@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   FiRefreshCcw,
   FiList,
@@ -11,7 +11,6 @@ import {
 } from 'react-icons/fi';
 
 const ParcelHistory = () => {
-  const [isGridView, setIsGridView] = useState(false);
 
   // Fake data matching the image
   const tableData = [

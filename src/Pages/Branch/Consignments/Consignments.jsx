@@ -55,14 +55,13 @@ const Consignments = () => {
   useTitle('All Parcel Consignments');
   const [parcels, setParcels] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [searchQuery, setSearchQuery] = useState('');
+  const searchQueryState = useState('');
+  const [searchQuery, setSearchQuery] = searchQueryState;
   const [statusFilter, setStatusFilter] = useState('All');
   const [selectedParcel, setSelectedParcel] = useState(null);
 
   const fetchParcels = async () => {
     setLoading(true);
-    setError(null);
     try {
       const { data } = await getAllParcelListApi();
       if (Array.isArray(data) && data.length > 0) {

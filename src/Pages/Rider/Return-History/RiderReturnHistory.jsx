@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   FiRefreshCcw,
   FiList,
@@ -16,7 +16,6 @@ import {
 } from 'react-icons/fi';
 
 const RiderReturnHistory = () => {
-  const [isGridView, setIsGridView] = useState(false);
 
   // Fake data for the table
   const tableData = [
