@@ -131,3 +131,103 @@ export const getHubAutoAssignRiderApi = async () => {
   const data = await response.json();
   return { status: response.status, data };
 };
+
+/**
+ * Fetches hub dashboard metrics from backend API
+ * Endpoint: GET https://courier.demo-bd.com/api/hub-dashboard
+ */
+export const getHubDashboardApi = async () => {
+  const token = localStorage.getItem('authToken');
+  const headers = {
+    'Accept': 'application/json',
+  };
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
+  }
+
+  const response = await fetch(`${BASE_URL}/api/hub-dashboard`, {
+    method: 'GET',
+    headers,
+  });
+
+  const data = await response.json();
+  return { status: response.status, data };
+};
+
+/**
+ * Submits bulk pickup collection for hub
+ * Endpoint: POST https://courier.demo-bd.com/api/hub-pickup-bulk-collection
+ * @param {Array<string>} trackingIds - List of parcel tracking IDs to collect
+ */
+export const hubPickupBulkCollectionApi = async (trackingIds) => {
+  const token = localStorage.getItem('authToken');
+  const headers = {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+  };
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
+  }
+
+  const response = await fetch(`${BASE_URL}/api/hub-pickup-bulk-collection`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify({
+      tracking_ids: trackingIds,
+    }),
+  });
+
+  const data = await response.json();
+  return { status: response.status, data };
+};
+
+/**
+ * Submits single pickup collection for hub
+ * Endpoint: POST https://courier.demo-bd.com/api/hub-pickup-single-collection
+ * Form-data key: 'id' (tracking_id value, e.g. CLab134025156)
+ * @param {string} trackingId
+ */
+export const hubPickupSingleCollectionApi = async (trackingId) => {
+  const token = localStorage.getItem('authToken');
+  const headers = {
+    'Accept': 'application/json',
+  };
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
+  }
+
+  const formData = new FormData();
+  formData.append('id', trackingId);
+  formData.append('tracking_id', trackingId);
+
+  try {
+    const response = await fetch(`${BASE_URL}/api/hub-pickup-single-collection`, {
+      method: 'POST',
+      headers,
+      body: formData,
+    });
+
+    const data = await response.json();
+    return { status: response.status, data };
+  } catch {
+    // Retry with JSON fallback
+    const jsonHeaders = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    };
+    if (token) jsonHeaders['Authorization'] = `Bearer ${token}`;
+
+    const response = await fetch(`${BASE_URL}/api/hub-pickup-single-collection`, {
+      method: 'POST',
+      headers: jsonHeaders,
+      body: JSON.stringify({ id: trackingId, tracking_id: trackingId }),
+    });
+
+    const data = await response.json();
+    console.log(data);
+    return { status: response.status, data };
+  }
+};
+
+
+
